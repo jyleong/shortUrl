@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  originLUrl: MyString
+  shortUrl: MyString
+  urlCode: MyString
+  created_at: 1
+  updated_at: 1
+
+two:
+  originLUrl: MyString
+  shortUrl: MyString
+  urlCode: MyString
+  created_at: 1
+  updated_at: 1
