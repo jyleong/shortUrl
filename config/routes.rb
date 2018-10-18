@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'hello_world', to: 'hello_world#index'
-  
+  get '/', to: 'hello_world#index'
+
   # UrlCode Resource
   post 'api/item', to: 'url#createShortUrl'
   get 'api/item', to: 'url#index'
