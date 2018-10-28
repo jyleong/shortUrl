@@ -37,5 +37,4 @@ const urlShortenerReducer = (state = initState, action) => {
     }
 };
 
-// const urlShortenerReducer = combineReducers({ request });
 export default urlShortenerReducer;
