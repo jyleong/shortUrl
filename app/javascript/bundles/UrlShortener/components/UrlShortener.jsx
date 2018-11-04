@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// ui stuff
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 class UrlShortener extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +20,7 @@ class UrlShortener extends React.Component {
 
   postUrl(e) {
     e.preventDefault();
-    if (originalUrl == null || originalUrl == "") {
+    if (this.state.originalUrl == null || this.state.originalUrl == "") {
       console.log('original url is blank');
       return;
     }
@@ -33,39 +38,51 @@ class UrlShortener extends React.Component {
     const { isLoading, hasError, originalUrl, shortUrl, urlCode } = this.props
     return (
       <div>
+        <Typography variant='display2' align='left' gutterBottom>
+          React on Rails urlShortener
+        </Typography>
         <hr />
         <form onSubmit={this.postUrl}>
-          <label htmlFor="Url">
+          
+          <Typography variant='h6' align='left' gutterBottom>
             Original URL:
-          </label>
-          <h3>
+          </Typography>
+          <Typography variant='subtitle1' align='left' color='primary' gutterBottom>
             Ex: https://stackoverflow.com/questions/38817797/react-on-rails-passing-and-formatting-props
-          </h3>
-          <input
-            id="originalUrl"
-            type="text"
+          </Typography>
+          
+          <TextField
+            name='originalUrl'
+            label='Original Url'
             value={this.state.originalUrl}
             onChange={this.handleOriginalUrlChange}
-            />
+            fullWidth
+            margin={'normal'}
+          />
           <hr />
-          <label htmlFor="Url">
+          <Typography variant='h6' align='left' gutterBottom>
             Base URL:
-          </label>
-          <input 
-            id="baseUrl" 
-            type="text" 
+          </Typography>
+
+          <TextField
+            name='baseUrl'
+            label='Base Url'
             value={this.state.baseUrl}
             onChange={this.handleBaseUrlChange}
+            fullWidth
+            margin={'normal'}
           />
           <br />
-          <button type="submit">Submit</button>
+          <Button type="submit" variant={'contained'} color={'primary'} fullWidth>
+            Submit
+          </Button>
         </form>
         <hr />
         { shortUrl && shortUrl != "" && urlCode && urlCode != "" &&
-          <h3>
+          <Typography variant='h6' align='left' gutterBottom>
             Shortened Url: 
               <a href={this.props.originalUrl} target="_blank"> {shortUrl}/{urlCode}</a>
-          </h3>
+          </Typography>
         }
       </div>
     )

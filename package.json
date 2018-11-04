@@ -16,6 +16,7 @@
     "setupTestFrameworkScriptFile": "./spec/javascript/setupTests.js"
   },
   "dependencies": {
+    "@material-ui/core": "^3.3.2",
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
@@ -27,7 +28,8 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
