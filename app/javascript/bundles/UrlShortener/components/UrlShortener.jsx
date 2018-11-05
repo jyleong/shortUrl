@@ -36,6 +36,13 @@ class UrlShortener extends React.Component {
   }
   render() {
     const { isLoading, hasError, originalUrl, shortUrl, urlCode } = this.props
+    
+    let shortenedUrl = hasError ? (<Typography variant='h6' align='center' color='error' gutterBottom>Server Error</Typography>) : null;
+
+    shortenedUrl = (shortUrl && shortUrl != "" && urlCode && urlCode != "") ? 
+      (<Typography variant='h6' align='left' gutterBottom>
+        Shortened Url: <a href={this.props.originalUrl} target="_blank"> {shortUrl}/{urlCode}</a>
+      </Typography>) : shortenedUrl;
     return (
       <div>
         <Typography variant='display2' align='left' gutterBottom>
@@ -59,7 +66,7 @@ class UrlShortener extends React.Component {
             fullWidth
             margin={'normal'}
           />
-          <hr />
+          <br />
           <Typography variant='h6' align='left' gutterBottom>
             Base URL:
           </Typography>
@@ -77,17 +84,11 @@ class UrlShortener extends React.Component {
             Submit
           </Button>
         </form>
-        <hr />
-        { shortUrl && shortUrl != "" && urlCode && urlCode != "" &&
-          <Typography variant='h6' align='left' gutterBottom>
-            Shortened Url: 
-              <a href={this.props.originalUrl} target="_blank"> {shortUrl}/{urlCode}</a>
-          </Typography>
-        }
+        <br />
+        { shortenedUrl }
       </div>
     )
   }
-
 }
 
 UrlShortener.propTypes = {
