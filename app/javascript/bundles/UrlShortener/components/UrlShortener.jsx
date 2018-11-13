@@ -41,7 +41,7 @@ class UrlShortener extends React.Component {
 
     shortenedUrl = (shortUrl && shortUrl != "" && urlCode && urlCode != "") ? 
       (<Typography variant='h6' align='left' gutterBottom>
-        Shortened Url: <a href={this.props.originalUrl} target="_blank"> {shortUrl}/{urlCode}</a>
+        Shortened Url: <a href={`${shortUrl}:8080/${urlCode}`} target="_blank"> {shortUrl}/{urlCode}</a>
       </Typography>) : shortenedUrl;
     return (
       <div>

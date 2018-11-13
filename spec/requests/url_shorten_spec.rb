@@ -26,14 +26,12 @@ RSpec.describe 'UrlShorten API', type: :request do
     before { get "/api/item/#{urlCode}" }
 
     context 'when the record exists' do
-      it 'returns the UrlShorten' do
-        expect(json).not_to be_empty
-        expect(json['originalUrl']).to eq(origUrl)
-        expect(json['urlCode']).to eq(urlCode)
+      it 'returns the UrlShorten original Url' do
+        expect(response).to redirect_to(origUrl)
       end
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(302)
       end
     end
 

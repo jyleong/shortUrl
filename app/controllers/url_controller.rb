@@ -29,7 +29,7 @@ class UrlController < ApplicationController
   # GET /api/item/:urlCode
   def getUrlCode
     if not @urlShorten.nil?
-      return json_response(@urlShorten, :ok)
+      redirect_to @urlShorten[:originalUrl]
     else
       return json_response({message: "Couldn't find shortUrl"},:not_found)
     end
