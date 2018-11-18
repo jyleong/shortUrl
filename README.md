@@ -1,38 +1,44 @@
-# README
+# shortUrl React on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built using shakacode React on Rails:
+[React on Rails](https://github.com/shakacode/react_on_rails)
 
-Things you may want to cover:
+Following tutorial to get the environment set up:
+[Shakacode React on Rails tutorial](https://github.com/shakacode/react_on_rails/blob/master/docs/tutorial.md)
 
-* Ruby version
 
-* System dependencies
+Nginx Configuration:
 
-* Configuration
+First check if you have nginx installed
 
-* Database creation
+Open up the nginx conf file, in mac its under
+/usr/local/etc/nginx/nginx.conf
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Edit this file, under the server block add:
+```
+location ~* "^/[0-9a-z@]{5,15}$"  {
+        rewrite ^/(.*)$ http://localhost:3000/api/item/$1 redirect;
+}
+```
+For the ability to proxy and forward requests to http://<homeurl>/<urlCode>
+to the GET API
+Save file and restart nginx
 
 To run tests:
 
 ```
-react component tests
+React component tests
 
 > yarn test
 
-rails backend api tests
+Rails backend api tests
 
 > rspec
+
+Run backend tests in specific location
+
+> rspec <directory location>
+> rspec spec/models
 
 ```
 
@@ -49,3 +55,5 @@ To run with the webpack-dev-server:
 
 > foreman start -f Procfile.dev-server
 ```
+
+View the app via http:localhost:3000
